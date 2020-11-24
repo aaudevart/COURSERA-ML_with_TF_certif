@@ -14,3 +14,19 @@ Use of statistical method
 Use of DNN
 
 Sequence bias is when the order of things can impact the selection of things. 
+
+
+
+### Week 3
+
+For this week, we've built on your DNNs with RNNs and LSTMs
+
+LearningRateScheduler
+
+Huber loss function : a loss function used in robust regression, that is less sensitive to outliers in data than the squared error loss.
+
+Clears out all temporary variables that TF might have from previous sessions => tf.keras.backend.clear_session
+
+Defines the dimension index at which you will expand the shape of the tensor => tf.expand_dims
+
+Allowss you to execute arbitrary code while training => Lambda layer
