@@ -1,0 +1,203 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "colab_type": "text",
+    "id": "tOoyQ70H00_s"
+   },
+   "source": [
+    "## Exercise 2\n",
+    "In the course you learned how to do classificaiton using Fashion MNIST, a data set containing items of clothing. There's another, similar dataset called MNIST which has items of handwriting -- the digits 0 through 9.\n",
+    "\n",
+    "Write an MNIST classifier that trains to 99% accuracy or above, and does it without a fixed number of epochs -- i.e. you should stop training once you reach that level of accuracy.\n",
+    "\n",
+    "Some notes:\n",
+    "1. It should succeed in less than 10 epochs, so it is okay to change epochs= to 10, but nothing larger\n",
+    "2. When it reaches 99% or greater it should print out the string \"Reached 99% accuracy so cancelling training!\"\n",
+    "3. If you add any additional variables, make sure you use the same names as the ones used in the class\n",
+    "\n",
+    "I've started the code for you below -- how would you finish it? "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import tensorflow as tf\n",
+    "from os import path, getcwd, chdir\n",
+    "\n",
+    "# DO NOT CHANGE THE LINE BELOW. If you are developing in a local\n",
+    "# environment, then grab mnist.npz from the Coursera Jupyter Notebook\n",
+    "# and place it inside a local folder and edit the path to that location\n",
+    "path = f\"{getcwd()}/../tmp2/mnist.npz\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {
+    "colab": {},
+    "colab_type": "code",
+    "id": "9rvXQGAA0ssC"
+   },
+   "outputs": [],
+   "source": [
+    "# GRADED FUNCTION: train_mnist\n",
+    "def train_mnist():\n",
+    "    # Please write your code only where you are indicated.\n",
+    "    # please do not remove # model fitting inline comments.\n",
+    "\n",
+    "    # YOUR CODE SHOULD START HERE\n",
+    "    class myCallback(tf.keras.callbacks.Callback):\n",
+    "        def on_epoch_end(self, epoch, logs={}):\n",
+    "            if(logs.get('acc')>0.99):\n",
+    "                print(\"Reached 99% accuracy so cancelling training!\")\n",
+    "                self.model.stop_training = True\n",
+    "    \n",
+    "\n",
+    "    # YOUR CODE SHOULD END HERE\n",
+    "\n",
+    "    mnist = tf.keras.datasets.mnist\n",
+    "\n",
+    "    (x_train, y_train),(x_test, y_test) = mnist.load_data(path=path)\n",
+    "    # YOUR CODE SHOULD START HERE\n",
+    "    x_train = x_train/256\n",
+    "    x_test = x_test/256\n",
+    "    # YOUR CODE SHOULD END HERE\n",
+    "    model = tf.keras.models.Sequential([\n",
+    "        # YOUR CODE SHOULD START HERE\n",
+    "        tf.keras.layers.Flatten(),\n",
+    "        tf.keras.layers.Dense(100, \"relu\"),\n",
+    "        tf.keras.layers.Dense(10, \"softmax\")\n",
+    "        # YOUR CODE SHOULD END HERE\n",
+    "    ])\n",
+    "\n",
+    "    model.compile(optimizer='adam',\n",
+    "                  loss='sparse_categorical_crossentropy',\n",
+    "                  metrics=['accuracy'])\n",
+    "    \n",
+    "    # model fitting\n",
+    "    # YOUR CODE SHOULD START HERE\n",
+    "    history = model.fit(x=x_train, \n",
+    "                        y=y_train, \n",
+    "                        validation_data=(x_test, y_test), \n",
+    "                        epochs=10, \n",
+    "                        callbacks=[myCallback()]\n",
+    "              # YOUR CODE SHOULD END HERE\n",
+    "    )\n",
+    "    # model fitting\n",
+    "    return history.epoch, history.history['acc'][-1]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {
+    "colab": {},
+    "colab_type": "code",
+    "id": "9rvXQGAA0ssC"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Train on 60000 samples, validate on 10000 samples\n",
+      "Epoch 1/10\n",
+      "60000/60000 [==============================] - 11s 192us/sample - loss: 0.2691 - acc: 0.9233 - val_loss: 0.1436 - val_acc: 0.9556\n",
+      "Epoch 2/10\n",
+      "60000/60000 [==============================] - 10s 175us/sample - loss: 0.1192 - acc: 0.9643 - val_loss: 0.1036 - val_acc: 0.9693\n",
+      "Epoch 3/10\n",
+      "60000/60000 [==============================] - 11s 182us/sample - loss: 0.0811 - acc: 0.9757 - val_loss: 0.0903 - val_acc: 0.9712\n",
+      "Epoch 4/10\n",
+      "60000/60000 [==============================] - 11s 182us/sample - loss: 0.0625 - acc: 0.9806 - val_loss: 0.0809 - val_acc: 0.9755\n",
+      "Epoch 5/10\n",
+      "60000/60000 [==============================] - 11s 186us/sample - loss: 0.0511 - acc: 0.9839 - val_loss: 0.0828 - val_acc: 0.9738\n",
+      "Epoch 6/10\n",
+      "60000/60000 [==============================] - 11s 185us/sample - loss: 0.0404 - acc: 0.9878 - val_loss: 0.0844 - val_acc: 0.9749\n",
+      "Epoch 7/10\n",
+      "60000/60000 [==============================] - 11s 190us/sample - loss: 0.0337 - acc: 0.9893 - val_loss: 0.0865 - val_acc: 0.9765\n",
+      "Epoch 8/10\n",
+      "59744/60000 [============================>.] - ETA: 0s - loss: 0.0284 - acc: 0.9912Reached 99% accuracy so cancelling training!\n",
+      "60000/60000 [==============================] - 11s 182us/sample - loss: 0.0284 - acc: 0.9912 - val_loss: 0.0747 - val_acc: 0.9784\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "([0, 1, 2, 3, 4, 5, 6, 7], 0.99118334)"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "train_mnist()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Now click the 'Submit Assignment' button above.\n",
+    "# Once that is complete, please run the following two cells to save your work and close the notebook"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "%%javascript\n",
+    "<!-- Save the notebook -->\n",
+    "IPython.notebook.save_checkpoint();"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "%%javascript\n",
+    "IPython.notebook.session.delete();\n",
+    "window.onbeforeunload = null\n",
+    "setTimeout(function() { window.close(); }, 1000);"
+   ]
+  }
+ ],
+ "metadata": {
+  "coursera": {
+   "course_slug": "introduction-tensorflow",
+   "graded_item_id": "d6dew",
+   "launcher_item_id": "FExZ4"
+  },
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 1
+}

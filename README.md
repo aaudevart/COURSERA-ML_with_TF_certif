@@ -1,6 +1,12 @@
 # COURSERA-ML_with_TF_certif
 MOOC to prepare TF certification
 
+## Part 1 - Introduction to TF for AI
+
+### Week 1
+
+Traditional Programming : Rules + Data => Answers
+Machine Learning : Data + Answers => Rules
 
 ## Part 4 - Sequence & Time Series prediction
 
@@ -29,4 +35,10 @@ Clears out all temporary variables that TF might have from previous sessions => 
 
 Defines the dimension index at which you will expand the shape of the tensor => tf.expand_dims
 
-Allowss you to execute arbitrary code while training => Lambda layer
+Allows you to execute arbitrary code while training => Lambda layer
+
+
+### Week 4
+
+
+Use of Conv1D
