@@ -54,6 +54,9 @@ Image Generator used rescale method to normalize the image
 
 The target_size parameter specifies the training size for the images on the training generator
 
+
+TODO >> Exercise 4 - Handling complex images
+
 ## Part 4 - Sequence & Time Series prediction
 
 ### Week 1
