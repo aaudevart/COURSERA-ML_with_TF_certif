@@ -57,6 +57,21 @@ The target_size parameter specifies the training size for the images on the trai
 
 TODO >> Exercise 4 - Handling complex images
 
+## Part 2 - Convolutional Neural Networks
+
+### Week 1:
+
+If my Image is sized 150x150, and I pass a 3x3 Convolution over it, the size of the resulting image is 148x148
+If my data is sized 150x150, and I use Pooling of size 2x2, the size of the resulting image is 75x75
+If I want to view the history of my training,, I create a variable ‘history’ and assign it to the return of model.fit or model.fit_generator
+The model.layers API allows you to inspect the impact of convolutions on the images
+The validation accuracy is based on images that the model hasn't been trained with, and thus a better indicator of how the model will perform with new images.
+
+The flow_from_directory give you on the ImageGenerator : the ability to easily load images for training, the ability to pick the size of training images and the ability to automatically label images based on their directory name
+
+Overfitting more likely to occur on smaller datasets because there's less likelihood of all possible features being encountered in the training process.
+
+
 ## Part 4 - Sequence & Time Series prediction
 
 ### Week 1
