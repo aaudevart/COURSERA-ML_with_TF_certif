@@ -59,7 +59,7 @@ TODO >> Exercise 4 - Handling complex images
 
 ## Part 2 - Convolutional Neural Networks
 
-### Week 1:
+### Week 1
 
 If my Image is sized 150x150, and I pass a 3x3 Convolution over it, the size of the resulting image is 148x148
 If my data is sized 150x150, and I use Pooling of size 2x2, the size of the resulting image is 75x75
@@ -71,6 +71,29 @@ The flow_from_directory give you on the ImageGenerator : the ability to easily l
 
 Overfitting more likely to occur on smaller datasets because there's less likelihood of all possible features being encountered in the training process.
 
+
+TODO >> Ungraded Exercice Let's start building a classifier using the full Cats v Dogs dataset of 25k images.
+
+### Week 2 : Image Augmentation
+
+ImageDataGenerator:
+- rotation_range is a value in degrees (0–180), a range within which to randomly rotate pictures.
+- width_shift and height_shift are ranges (as a fraction of total width or height) within which to randomly translate pictures vertically or horizontally.
+- shear_range is for randomly applying shearing transformations.
+- zoom_range is for randomly zooming inside pictures.
+- horizontal_flip is for randomly flipping half of the images horizontally. This is relevant when there are no assumptions of horizontal assymmetry (e.g. real-world pictures).
+- fill_mode is the strategy used for filling in newly created pixels, which can appear after a rotation or a width/height shift. => It attempts to recreate lost information after a transformation like a shear
+
+the image augmentation introduces a random element to the training images but if the validation set doesn't have the same randomness, then its results can fluctuate like this. 
+
+all augmentation is done in-memory
+
+
+When training with augmentation, you noticed that the training is a little slower because the image processing takes cycles.
+
+Add Augmentation to it, and experiment with different parameters to avoid overfitting. This will likely take a lot of time -- as it requires using the full dataset along with augmentation code to edit the data on-the-fly.
+
+TODO >> Ungraded Exercice
 
 ## Part 4 - Sequence & Time Series prediction
 
