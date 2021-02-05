@@ -93,7 +93,51 @@ When training with augmentation, you noticed that the training is a little slowe
 
 Add Augmentation to it, and experiment with different parameters to avoid overfitting. This will likely take a lot of time -- as it requires using the full dataset along with augmentation code to edit the data on-the-fly.
 
+1) All the original images are just transformed (i.e. rotation, zooming, etc.) every epoch and then used for training, and 
+2) [Therefore] the number of images in each epoch is equal to the number of original images you have.
+
 TODO >> Ungraded Exercice
+
+### Week 3: Transfer Learning
+
+What we learn?
+Transfer Learning: you can take an existing model, freeze many of its layers to prevent them being retrained, and effectively 'remember' the convolutions it was trained on to fit images. You then added your own DNN underneath this so that you could retrain on your images using the convolutions from the other model. 
+You learned about regularization using dropouts to make your network more efficient in preventing over-specialization and this overfitting.
+
+Good Intro for def TL
+
+Video 1 => good schema
+
+BatchNormalization & TL:
+- Many models contain tf.keras.layers.BatchNormalization layers. This layer is a special case and precautions should be taken in the context of fine-tuning, as shown later in this tutorial.
+- When you set layer.trainable = False, the BatchNormalization layer will run in inference mode, and will not update its mean and variance statistics.
+- When you unfreeze a model that contains BatchNormalization layers in order to do fine-tuning, you should keep the BatchNormalization layers in inference mode by passing training = False when calling the base model. Otherwise, the updates applied to the non-trainable weights will destroy what the model has learned. 
+
+TL Principles:
+We saw how to take the layers from an existing model, and make them so that they don't get retrained -- i.e. we freeze (or lock) the already learned convolutions into your model. 
+After that, we have to add our own DNN at the bottom of these, which we can retrain to our data.
+
+Dropout:
+The idea behind Dropouts is that they remove a random number of neurons in your neural network. 
+This works very well for two reasons: 
+- The first is that neighboring neurons often end up with similar weights, which can lead to overfitting, so dropping some out at random can remove this. 
+- The second is that often a neuron can over-weight the input from a neuron in the previous layer, and can over specialize as a result. Thus, dropping out can break the neural network out of this potential bad habit! 
+
+TODO >> Ungraded Exercice
+
+### Week 4 : Multiclass Classifications
+
+[Rock Paper Scissors Dataset](http://www.laurencemoroney.com/rock-paper-scissors-dataset/)
+
+## Part 3 - Natural Language Processing in TensorFlow
+
+### Week 1
+
+### Week 2
+
+### Week 3
+
+### Week 4
 
 ## Part 4 - Sequence & Time Series prediction
 
