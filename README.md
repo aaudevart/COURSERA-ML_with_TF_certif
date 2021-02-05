@@ -1,5 +1,5 @@
 # COURSERA-ML_with_TF_certif
-MOOC to prepare TF certification
+My notes / MOOC to prepare TF certification
 
 ## Part 1 - Introduction to TF for AI
 
@@ -131,7 +131,21 @@ TODO >> Ungraded Exercice
 
 ## Part 3 - Natural Language Processing in TensorFlow
 
-### Week 1
+### Week 1: Sentiment in text
+
+1-how to tokenize the words and sentences, building up a dictionary of all the words to make a corpus
+
+Word based encodings :
+- if encoding character in ASCII =>  semantics of the word aren't encoded in the letters => Silent != Listen
+- we have a value per word, and the value is the same for the same word every time
+
+`keras.preprocessing.text.Tokenizer(num_words)`
+- method used to tokenize a list of sentences: `fit_on_texts(sentences)`
+- `word_index`
+- method used to encode a list of sentences to use those tokens: `text_to_sequences(sentences)`
+- Out Of Vocabulary: `keras.preprocessing.text.Tokenizer(num_words, oov_token="<OOV>")`
+
+Padding: `tf.keras.preprocessing.sequence.pad_sequences(sequences, padding='post', truncating='post', maxlen=5)`
 
 ### Week 2
 
