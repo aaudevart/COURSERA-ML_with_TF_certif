@@ -149,9 +149,23 @@ Padding: `tf.keras.preprocessing.sequence.pad_sequences(sequences, padding='post
 
 ### Week 2
 
+Embedding, with the idea being that words and associated words are clustered as vectors in a multi-dimensional space. 
+= It is the number of dimensions for the vector representing the word encoding
+
+TensorFlow Data Services or TFTS contains many data sets and lots of different categories
+
+http://projector.tensorflow.org/
+
+When using IMDB Sub Words dataset, our results in classification were poor. Why? Sequence becomes much more important when dealing with subwords, but we’re ignoring word positions
+
 ### Week 3
 
+output shape of a bidirectional LSTM layer with 64 units is (None, 128)
+
+
 ### Week 4
+
+Generate shakespeare text
 
 ## Part 4 - Sequence & Time Series prediction
 
