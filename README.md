@@ -192,17 +192,28 @@ conv1D - globalAveragePool1D`
 
 Generate shakespeare text
 
-`bidirectional (LSTM)
+`np.where,
+bidirectional (LSTM)
 dropout`
 
 ## Part 4 - Sequence & Time Series prediction
 
 ### Week 1: Use of statistical method
 
+Data = Seasonality + Noise + Raw Data
+Moving Average Forecast: Forecasts the mean of the last few values.
+Remove the seasonality and apply Moving Average Forecast =>  we'll see a relatively smooth moving average not impacted by seasonality
+`MAE, MSE`
+
 
 ### Week 2: Use of DNN
 
 - Sequence bias is when the order of things can impact the selection of things. 
+
+`tf.data.Dataset / window / flat_map / map / shuffle / batch / prefetch` 
+
+`lr_schedule = tf.keras.callbacks.LearningRateScheduler(
+    lambda epoch: 1e-8 * 10**(epoch / 20))`
 
 ### Week 3: DNNs with RNNs and LSTMs
 
@@ -212,7 +223,11 @@ dropout`
 - Defines the dimension index at which you will expand the shape of the tensor => tf.expand_dims
 - Allows you to execute arbitrary code while training => Lambda layer
 
+`Huber Loss, SimpleRNN, Bidir LSTM`
+
 ### Week 4: Use of Conv1D
+
+`Conv1D`
 
 ## More and more....
 [Colab Files](https://neptune.ai/blog/google-colab-dealing-with-files)
