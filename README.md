@@ -16,8 +16,8 @@ My notes / MOOC to prepare TF certification
 ### Week 2
 
 - Relu: It only returns x if x is greater than zero
--  Softmax takes a set of values, and effectively picks the biggest one
-- split data into training and test sets To test a network with previously unseen data
+- Softmax takes a set of values, and effectively picks the biggest one
+- Split data into training and test sets To test a network with previously unseen data
 
 ### Week 3: CNN
 
@@ -36,10 +36,10 @@ Some links:
 ### Week 4: apply convolutional neural networks to much bigger and more complex images
 
 - ImageGenerator
-- sigmoid is great for binary classification
-- Image Generator labels images: It’s based on the directory the image is contained in
-- Image Generator used rescale method to normalize the image
-- The target_size parameter specifies the training size for the images on the training generator
+  * Image Generator labels images: It’s based on the directory the image is contained in
+  * Image Generator used rescale method to normalize the image
+  * The target_size parameter specifies the training size for the images on the training generator
+- Sigmoid is great for binary classification
 
 Some links:
 - [Cross Entropy Loss](https://gombru.github.io/2018/05/23/cross_entropy_loss/)
@@ -64,20 +64,19 @@ Some links:
 ### Week 2: Image Augmentation
 
 - ImageDataGenerator:
- - rotation_range is a value in degrees (0–180), a range within which to randomly rotate pictures.
- - width_shift and height_shift are ranges (as a fraction of total width or height) within which to randomly translate pictures vertically or horizontally.
- - shear_range is for randomly applying shearing transformations.
- - zoom_range is for randomly zooming inside pictures.
- - horizontal_flip is for randomly flipping half of the images horizontally. This is relevant when there are no assumptions of horizontal assymmetry (e.g. real-world pictures).
- - fill_mode is the strategy used for filling in newly created pixels, which can appear after a rotation or a width/height shift. => It attempts to recreate lost information after a transformation like a shear
+  * rotation_range is a value in degrees (0–180), a range within which to randomly rotate pictures.
+  * width_shift and height_shift are ranges (as a fraction of total width or height) within which to randomly translate pictures vertically or horizontally.
+  * shear_range is for randomly applying shearing transformations.
+  * zoom_range is for randomly zooming inside pictures.
+  * horizontal_flip is for randomly flipping half of the images horizontally. This is relevant when there are no assumptions of horizontal assymmetry (e.g. real-world pictures).
+  * fill_mode is the strategy used for filling in newly created pixels, which can appear after a rotation or a width/height shift. => It attempts to recreate lost information after a transformation like a shear
 
 - The image augmentation introduces a random element to the training images but if the validation set doesn't have the same randomness, then its results can fluctuate like this. 
 - All augmentation is done in-memory
 - When training with augmentation, you noticed that the training is a little slower because the image processing takes cycles.
 - Add Augmentation to it, and experiment with different parameters to avoid overfitting. This will likely take a lot of time -- as it requires using the full dataset along with augmentation code to edit the data on-the-fly.
-
-1) All the original images are just transformed (i.e. rotation, zooming, etc.) every epoch and then used for training, and 
-2) [Therefore] the number of images in each epoch is equal to the number of original images you have.
+  * 1) All the original images are just transformed (i.e. rotation, zooming, etc.) every epoch and then used for training, and 
+  * 2) [Therefore] the number of images in each epoch is equal to the number of original images you have.
 
 **TODO >> Ungraded Exercice**
 
