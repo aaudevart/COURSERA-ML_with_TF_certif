@@ -3,7 +3,7 @@ My notes / MOOC to prepare TF certification
 
 ## Part 1 - Introduction to TF for AI
 
-### Week 1
+### Week 1 (function)
 
 - Traditional Programming: Rules + Data => Answers
 - Machine Learning: Data + Answers => Rules
@@ -13,13 +13,24 @@ My notes / MOOC to prepare TF certification
 - Convergence is the process of getting very close to the correct answer
 - The model.fit trains the neural network to fit one set of values to another
 
-### Week 2
+### Week 2 (fashion MNIST)
 
 - Relu: It only returns x if x is greater than zero
 - Softmax takes a set of values, and effectively picks the biggest one
 - Split data into training and test sets To test a network with previously unseen data
 
-### Week 3: CNN
+
+`Load from tf.keras.datasets
+Normalizing images
+Activation function: relu, softmax
+Optimizers: adam
+Sparse_categorical_crossentropy: integer form
+Categorical_crossentropy: 1-hot encoding
+flatten
+CallBack on_epoch_end
+History.epoch, history.history['acc']`
+
+### Week 3: CNN (fachion MNSIT)
 
 - Convolution: A technique to isolate features in images
 - Convolutions improve image recognition: They isolate features in images
@@ -31,9 +42,15 @@ Some links:
 - [GitHub Coursera classe](https://github.com/lmoroney/dlaicourse)
 - [CNN with Andrew NG](https://www.youtube.com/playlist?list=PLkDaE6sCZn6Gl29AoE31iwdVwSG-KnDzF)
 
+`Conv2D, MaxPooling2D`
+
+Demos:
+- Visualize Conv & Pooling => cf notebook 1
+- How conv works => cf notebook 2
+
 **TODO >> Exercise 3 - Improve MNIST with convolutions**
 
-### Week 4: apply convolutional neural networks to much bigger and more complex images
+### Week 4: apply convolutional neural networks to much bigger and more complex images (horse vs humans)
 
 - ImageGenerator
   * Image Generator labels images: It’s based on the directory the image is contained in
@@ -45,11 +62,22 @@ Some links:
 - [Cross Entropy Loss](https://gombru.github.io/2018/05/23/cross_entropy_loss/)
 - [RMSProp & Momentum](http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf)
 
+`ZipFile => Gestion des répertoires
+Binary-croosentropy
+
+datagen = ImageDataGenerator(rescale=1/255)
+datagen.flow_from_directory src_dir, target_size(XX,XX), batch_size=256, class_mode="binary")`
+
+Demo:
+- Visualize intermediaite representation
+
+Predict of one image => np.expand !
+
 **TODO >> Exercise 4 - Handling complex images**
 
 ## Part 2 - Convolutional Neural Networks
 
-### Week 1
+### Week 1: (cats & dogs)
 
 - If my Image is sized 150x150, and I pass a 3x3 Convolution over it, the size of the resulting image is 148x148
 - If my data is sized 150x150, and I use Pooling of size 2x2, the size of the resulting image is 75x75
@@ -59,9 +87,11 @@ Some links:
 - The flow_from_directory give you on the ImageGenerator : the ability to easily load images for training, the ability to pick the size of training images and the ability to automatically label images based on their directory name
 - Overfitting more likely to occur on smaller datasets because there's less likelihood of all possible features being encountered in the training process.
 
+`Plot Acc & Loss`
+
 **TODO >> Ungraded Exercice Let's start building a classifier using the full Cats v Dogs dataset of 25k images.**
 
-### Week 2: Image Augmentation
+### Week 2: Image Augmentation (cats & dogs)
 
 - ImageDataGenerator:
   * rotation_range is a value in degrees (0–180), a range within which to randomly rotate pictures.
@@ -78,9 +108,11 @@ Some links:
   * 1) All the original images are just transformed (i.e. rotation, zooming, etc.) every epoch and then used for training, and 
   * 2) [Therefore] the number of images in each epoch is equal to the number of original images you have.
 
+`ÌmageDataGenerator`
+
 **TODO >> Ungraded Exercice**
 
-### Week 3: Transfer Learning
+### Week 3: Transfer Learning (cats & dogs / horses vs humans)
 
 What we learn?
 Transfer Learning: you can take an existing model, freeze many of its layers to prevent them being retrained, and effectively 'remember' the convolutions it was trained on to fit images. You then added your own DNN underneath this so that you could retrain on your images using the convolutions from the other model. 
@@ -105,15 +137,20 @@ Dropout:
  - The first is that neighboring neurons often end up with similar weights, which can lead to overfitting, so dropping some out at random can remove this. 
  - The second is that often a neuron can over-weight the input from a neuron in the previous layer, and can over specialize as a result. Thus, dropping out can break the neural network out of this potential bad habit! 
 
+`Ìnception
+include_top
+load_wieghts
+dropout`
+
 **TODO >> Ungraded Exercice**
 
-### Week 4: Multiclass Classifications
+### Week 4: Multiclass Classifications (Rock Paper Scissors)
 
 [Rock Paper Scissors Dataset](http://www.laurencemoroney.com/rock-paper-scissors-dataset/)
 
 ## Part 3 - Natural Language Processing in TensorFlow
 
-### Week 1: Sentiment in text
+### Week 1: Sentiment in text (BBC news)
 
 1-how to tokenize the words and sentences, building up a dictionary of all the words to make a corpus
 
@@ -129,25 +166,38 @@ Word based encodings :
 
 Padding: `tf.keras.preprocessing.sequence.pad_sequences(sequences, padding='post', truncating='post', maxlen=5)`
 
-### Week 2
+### Week 2 (IMDB)
 
 Embedding, with the idea being that words and associated words are clustered as vectors in a multi-dimensional space. 
 = It is the number of dimensions for the vector representing the word encoding
 
-TensorFlow Data Services or TFTS contains many data sets and lots of different categories
+TensorFlow Data Services or TFDS contains many data sets and lots of different categories
 
 http://projector.tensorflow.org/
 
 When using IMDB Sub Words dataset, our results in classification were poor. Why? Sequence becomes much more important when dealing with subwords, but we’re ignoring word positions
 
-### Week 3
+`tfds
+binary_crossentropy
+embeddings`
+
+Demo:
+- vec+meta = visu embeddings
+
+### Week 3 (IMDB subwords / Sarcasm / IMDB) 
 
 output shape of a bidirectional LSTM layer with 64 units is (None, 128)
 
+`bidirectional (LSTM)
+multilayer
+conv1D - globalAveragePool1D`
 
-### Week 4
+### Week 4 (Sonnets)
 
 Generate shakespeare text
+
+`bidirectional (LSTM)
+dropout`
 
 ## Part 4 - Sequence & Time Series prediction
 
