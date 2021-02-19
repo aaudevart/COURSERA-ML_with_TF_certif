@@ -110,8 +110,6 @@ Predict of one image => np.expand !
 
 `ÌmageDataGenerator`
 
-**TODO >> Ungraded Exercice**
-
 ### Week 3: Transfer Learning (cats & dogs / horses vs humans)
 
 What we learn?
