@@ -140,8 +140,6 @@ include_top
 load_wieghts
 dropout`
 
-**TODO >> Ungraded Exercice**
-
 ### Week 4: Multiclass Classifications (Rock Paper Scissors)
 
 [Rock Paper Scissors Dataset](http://www.laurencemoroney.com/rock-paper-scissors-dataset/)
