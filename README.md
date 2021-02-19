@@ -215,3 +215,10 @@ dropout`
 - Allows you to execute arbitrary code while training => Lambda layer
 
 ### Week 4: Use of Conv1D
+
+## More and more....
+[Colab Files](https://neptune.ai/blog/google-colab-dealing-with-files)
+Save your model “efficiently”:
+1. Use EarlyStopping() keras callback (with restore_best_weights=True) to stop training before overfitting while reserving best weights so far.
+2. Use [ModelCheckpoint()](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/ModelCheckpoint) keras callback (with save_best_only=True) to save a copy of your model whenever it gets better.
+3. Use include_optimizer=False option in your keras.models.save_model (or model.save) statement, to reduce the size of your model. 
