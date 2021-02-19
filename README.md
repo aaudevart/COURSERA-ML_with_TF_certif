@@ -157,7 +157,7 @@ Word based encodings :
 `keras.preprocessing.text.Tokenizer(num_words)`
 - method used to tokenize a list of sentences: `fit_on_texts(sentences)`
 - `word_index`
-- method used to encode a list of sentences to use those tokens: `text_to_sequences(sentences)`
+- method used to encode a list of sentences to use those tokens: `texts_to_sequences(sentences)`
 - Out Of Vocabulary: `keras.preprocessing.text.Tokenizer(num_words, oov_token="<OOV>")`
 
 Padding: `tf.keras.preprocessing.sequence.pad_sequences(sequences, padding='post', truncating='post', maxlen=5)`
@@ -175,7 +175,8 @@ When using IMDB Sub Words dataset, our results in classification were poor. Why?
 
 `tfds
 binary_crossentropy
-embeddings`
+embeddings
+GlobalAveragePooling1D`
 
 Demo:
 - vec+meta = visu embeddings
