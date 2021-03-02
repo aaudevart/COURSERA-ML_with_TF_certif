@@ -30,7 +30,7 @@ flatten
 CallBack on_epoch_end
 History.epoch, history.history['acc']`
 
-### Week 3: CNN (fachion MNSIT)
+### Week 3: CNN (fachion MNIST)
 
 - Convolution: A technique to isolate features in images
 - Convolutions improve image recognition: They isolate features in images
